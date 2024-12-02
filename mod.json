@@ -25,9 +25,10 @@
 		"version": {
 			"type": "string",
 			"name": "Version",
-			"default": "1.0",
+			"default": "Disabled",
 			"description": "The servion of the editor to be simulating",
 			"one-of": [
+				"Disabled",
 				"1.0",
 				"1.1",
 				"1.2",
