@@ -23,3 +23,5 @@ endif()
 add_subdirectory($ENV{GEODE_SDK} ${CMAKE_CURRENT_BINARY_DIR}/geode)
 
 setup_geode_mod(${PROJECT_NAME})
+
+setup_geode_mod(... EXTERNALS alphalaneous.old_color_triggers:*)
