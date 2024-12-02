@@ -22,6 +22,9 @@ class $modify (RetroEditorUI, EditorUI)
         if (!EditorUI::init(editorLayer))
             return false;
 
+        std::string version = VersionUtils::getVersionSimulating();
+        if (!utils::string::startsWith(version, "1.")) return true;
+
         if (auto tabs = m_tabsMenu)
         {
             tabs->setScale(0);
@@ -66,7 +69,7 @@ class $modify (RetroEditorUI, EditorUI)
 
         for (size_t i = 0; i < tabs.size(); i++)
         {
-            auto objs2 = VersionUtils::getObjectsForVersion(VersionUtils::getVersionSimulating(), rows, columns, this, i);
+            auto objs2 = VersionUtils::getObjectsForVersion(version, rows, columns, this, i);
 
             for (auto obj : CCArrayExt<CCMenuItemSpriteExtra*>(objs2))
             {
