@@ -2,9 +2,8 @@
 	"geode": "4.0.1",
 	"gd": {
 		"win": "2.2074",
-		"android": "2.2074",
 		"mac": "2.2074",
-		"ios": "2.2074"
+		"android": "2.2074"
 	},
 	"id": "thesillydoggo.retro_edit",
 	"name": "Retro Edit",
@@ -19,7 +18,7 @@
 		{
 			"id": "alphalaneous.old_color_triggers",
 			"importance": "required",
-			"version": ">=1.0.2"
+			"version": "*"
 		}
 	],
 	"settings": {
