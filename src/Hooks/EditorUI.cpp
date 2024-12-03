@@ -22,7 +22,7 @@ class $modify (RetroEditorUI, EditorUI)
 
         std::string version = VersionUtils::getVersionSimulating();
         if (!utils::string::startsWith(version, "1.")) return true;
-
+      
         int rows = 6;
         int columns = 2;
 
