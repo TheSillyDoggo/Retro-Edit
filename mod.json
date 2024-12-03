@@ -2,9 +2,8 @@
 	"geode": "4.0.1",
 	"gd": {
 		"win": "2.2074",
-		"android": "2.2074",
 		"mac": "2.2074",
-		"ios": "2.2074"
+		"android": "2.2074"
 	},
 	"id": "thesillydoggo.retro_edit",
 	"name": "Retro Edit",
@@ -26,9 +25,10 @@
 		"version": {
 			"type": "string",
 			"name": "Version",
-			"default": "1.0",
+			"default": "Disabled",
 			"description": "The servion of the editor to be simulating",
 			"one-of": [
+				"Disabled",
 				"1.0",
 				"1.1",
 				"1.2",

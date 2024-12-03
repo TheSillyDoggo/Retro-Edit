@@ -1,6 +1,4 @@
-#include <Geode/Geode.hpp>
 #include <Geode/modify/EditorUI.hpp>
-#include <Geode/modify/EditButtonBar.hpp>
 
 #include "../Version.hpp"
 
@@ -22,10 +20,13 @@ class $modify (RetroEditorUI, EditorUI)
         if (!EditorUI::init(editorLayer))
             return false;
 
+        std::string version = VersionUtils::getVersionSimulating();
+        if (!utils::string::startsWith(version, "1.")) return true;
+      
         int rows = 6;
         int columns = 2;
 
-        auto tabs = VersionUtils::getTabs(VersionUtils::getVersionSimulating());
+        auto tabs = VersionUtils::getTabs(version);
         m_fields->tabs = tabs;
 
         auto tabsMenu = CCMenu::create();
@@ -56,7 +57,7 @@ class $modify (RetroEditorUI, EditorUI)
 
         for (size_t i = 0; i < tabs.size(); i++)
         {
-            auto objs2 = VersionUtils::getObjectsForVersion(VersionUtils::getVersionSimulating(), rows, columns, this, i);
+            auto objs2 = VersionUtils::getObjectsForVersion(version, rows, columns, this, i);
 
             for (auto obj : CCArrayExt<CCMenuItemSpriteExtra*>(objs2))
             {
@@ -80,6 +81,7 @@ class $modify (RetroEditorUI, EditorUI)
     void setupCreateMenu()
     {
         EditorUI::setupCreateMenu();
+        if (!utils::string::startsWith(VersionUtils::getVersionSimulating(), "1.")) return;
 
         if (auto tabs = m_tabsMenu)
         {
@@ -143,6 +145,7 @@ class $modify (RetroEditorUI, EditorUI)
     void resetUI()
     {
         EditorUI::resetUI();
+        if (!utils::string::startsWith(VersionUtils::getVersionSimulating(), "1.")) return;
 
         updateCustomTabs();
     }
@@ -150,6 +153,7 @@ class $modify (RetroEditorUI, EditorUI)
     void updateCreateMenu(bool p0)
     {
         EditorUI::updateCreateMenu(p0);
+        if (!utils::string::startsWith(VersionUtils::getVersionSimulating(), "1.")) return;
 
         for (auto btn : CCArrayExt<CCNode*>(m_fields->objs))
         {

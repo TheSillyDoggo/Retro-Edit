@@ -1,4 +1,3 @@
-#include <Geode/Geode.hpp>
 #include <Geode/modify/ColorSelectPopup.hpp>
 
 #include "../Version.hpp"
@@ -11,8 +10,6 @@ class $modify (ColorSelectPopup)
     {
         if (!ColorSelectPopup::init(p0, p1, p2))
             return false;
-
-
 
         return true;
     }
