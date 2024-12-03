@@ -1,7 +1,5 @@
 #pragma once
 
-#include <Geode/Geode.hpp>
-
 namespace VersionUtils
 {
     std::string getVersionSimulating();

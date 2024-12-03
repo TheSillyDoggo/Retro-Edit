@@ -1,6 +1,4 @@
-#include <Geode/Geode.hpp>
 #include <Geode/modify/EditorUI.hpp>
-#include <Geode/modify/EditButtonBar.hpp>
 
 #include "../Version.hpp"
 
@@ -25,20 +23,10 @@ class $modify (RetroEditorUI, EditorUI)
         std::string version = VersionUtils::getVersionSimulating();
         if (!utils::string::startsWith(version, "1.")) return true;
 
-        if (auto tabs = m_tabsMenu)
-        {
-            tabs->setScale(0);
-        }
-
-        for (auto tab : CCArrayExt<CCNode*>(m_createButtonBars))
-        {
-            tab->setScale(0);
-        }
-
         int rows = 6;
         int columns = 2;
 
-        auto tabs = VersionUtils::getTabs(VersionUtils::getVersionSimulating());
+        auto tabs = VersionUtils::getTabs(version);
         m_fields->tabs = tabs;
 
         auto tabsMenu = CCMenu::create();
@@ -90,6 +78,30 @@ class $modify (RetroEditorUI, EditorUI)
         return true;
     }
 
+    void setupCreateMenu()
+    {
+        EditorUI::setupCreateMenu();
+        if (!utils::string::startsWith(VersionUtils::getVersionSimulating(), "1.")) return;
+
+        if (auto tabs = m_tabsMenu)
+        {
+            tabs->setScale(0);
+        }
+
+        for (auto tab : CCArrayExt<CCNode*>(m_createButtonBars))
+        {
+            tab->setScale(0);
+        }
+
+        Loader::get()->queueInMainThread([this]
+        {
+            for (auto tab : CCArrayExt<CCNode*>(m_createButtonBars))
+            {
+                tab->setScale(0);
+            }
+        });
+    }
+
     void selectTab(int index)
     {
         if (m_fields->tabs.size() <= 1)
@@ -133,6 +145,7 @@ class $modify (RetroEditorUI, EditorUI)
     void resetUI()
     {
         EditorUI::resetUI();
+        if (!utils::string::startsWith(VersionUtils::getVersionSimulating(), "1.")) return;
 
         updateCustomTabs();
     }
@@ -140,6 +153,7 @@ class $modify (RetroEditorUI, EditorUI)
     void updateCreateMenu(bool p0)
     {
         EditorUI::updateCreateMenu(p0);
+        if (!utils::string::startsWith(VersionUtils::getVersionSimulating(), "1.")) return;
 
         for (auto btn : CCArrayExt<CCNode*>(m_fields->objs))
         {
