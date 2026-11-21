@@ -155,15 +155,14 @@ class $modify (RetroEditorUI, EditorUI)
         {
             if (auto tbtn = typeinfo_cast<CreateMenuItem*>(btn))
             {
-                auto btnSpr = as<ButtonSprite*>(tbtn->getNormalImage());
-                auto go = btnSpr->getChildByType<EffectGameObject>(0) || btnSpr->getChildByType<GameObject>(0);
-
-                auto col3 = as<CCSprite*>(tbtn->getChildByID("colour"_spr))->getColor();
-                auto col = btn->getTag() == m_selectedObjectIndex ? ccc3(127, 127, 127) : ccWHITE;
-                auto col2 = col3 == ccBLACK ? col3 : (btn->getTag() == m_selectedObjectIndex ? ccc3(127, 127, 127) : col3);
-
-                btnSpr->m_subBGSprite->setColor(col);
-                // go->setColor(col2);
+                if (auto btnSpr = typeinfo_cast<ButtonSprite*>(tbtn->getNormalImage()))
+                {
+                    auto col = btn->getTag() == m_selectedObjectIndex ? ccc3(127, 127, 127) : ccWHITE;
+                    if (btnSpr->m_subBGSprite)
+                    {
+                        btnSpr->m_subBGSprite->setColor(col);
+                    }
+                }
             }
         }
     }

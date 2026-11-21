@@ -1,33 +1,26 @@
 {
-	"geode": "4.0.1",
+	"geode": "5.11.2",
 	"gd": {
-		"win": "2.2074",
-		"android": "2.2074",
-		"mac": "2.2074",
-		"ios": "2.2074"
+		"win": "2.2081",
+		"android": "2.2081",
+		"mac": "2.2081",
+		"ios": "2.2081"
 	},
 	"id": "thesillydoggo.retro_edit",
 	"name": "Retro Edit",
-	"version": "v1.0.1",
+	"version": "v1.0.2",
 	"developer": "TheSillyDoggo",
 	"description": "Allows you to use the object palette from older versions of the game",
 	"tags": [
 		"modtober24",
 		"editor"
 	],
-	"dependencies": [
-		{
-			"id": "alphalaneous.old_color_triggers",
-			"importance": "required",
-			"version": ">=1.0.2"
-		}
-	],
 	"settings": {
 		"version": {
 			"type": "string",
 			"name": "Version",
 			"default": "1.0",
-			"description": "The servion of the editor to be simulating",
+			"description": "The version of the editor to be simulating",
 			"one-of": [
 				"1.0",
 				"1.1",

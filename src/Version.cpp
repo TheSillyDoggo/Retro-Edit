@@ -1,7 +1,7 @@
-#include "Version.hpp"
-#include <Geode/modify/GameObject.hpp>
-
-using namespace geode::prelude;
+template <typename T, typename U>
+inline T as(U ptr) {
+    return static_cast<T>(ptr);
+}
 
 std::string VersionUtils::getVersionSimulating()
 {
