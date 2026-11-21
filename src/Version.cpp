@@ -1,7 +1,15 @@
+#include <Geode/Geode.hpp>
+#include <Geode/modify/GameObject.hpp>
+#include "Version.hpp"
+
+using namespace geode::prelude;
+using namespace cocos2d;
+
 template <typename T, typename U>
 inline T as(U ptr) {
     return static_cast<T>(ptr);
 }
+
 std::string VersionUtils::getVersionSimulating()
 {
     return Mod::get()->getSettingValue<std::string>("version");
@@ -9,7 +17,6 @@ std::string VersionUtils::getVersionSimulating()
 
 bool isGameobjectCreateWithKeyFix = false;
 
-// What the fucking fuck is this assing ass
 class $modify (GameObject)
 {
     static GameObject* createWithKey(int key)
@@ -20,8 +27,6 @@ class $modify (GameObject)
 
         if (!pRet && isGameobjectCreateWithKeyFix)
         {
-            // idk vro
-
             if (key == 104)
             {
                 pRet = GameObject::createWithKey(899);
@@ -31,7 +36,6 @@ class $modify (GameObject)
 
                 if (CCSprite* newSpr = CCSprite::create("alphalaneous.old_color_triggers/edit_eTintLBtn_001.png"))
                 {
-                    pRet->m_hasSpecialChild = true;
                     pRet->setTexture(newSpr->getTexture());
                     pRet->setTextureRect(newSpr->getTextureRect());
                 }
@@ -46,7 +50,6 @@ class $modify (GameObject)
 
                 if (CCSprite* newSpr = CCSprite::createWithSpriteFrameName("edit_eTintCol01Btn_001.png"))
                 {
-                    pRet->m_hasSpecialChild = true;
                     pRet->setTexture(newSpr->getTexture());
                     pRet->setTextureRect(newSpr->getTextureRect());
                 }
@@ -61,12 +64,10 @@ class $modify (GameObject)
 
                 if (CCSprite* newSpr = CCSprite::createWithSpriteFrameName("edit_eTintCol01Btn_001.png"))
                 {
-                    pRet->m_hasSpecialChild = true;
                     pRet->setTexture(newSpr->getTexture());
                     pRet->setTextureRect(newSpr->getTextureRect());
                 }
             }
-
             if (!pRet)
                 pRet = GameObject::createWithKey(1);
         }
