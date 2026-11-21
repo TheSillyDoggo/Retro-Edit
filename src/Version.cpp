@@ -2,7 +2,6 @@ template <typename T, typename U>
 inline T as(U ptr) {
     return static_cast<T>(ptr);
 }
-
 std::string VersionUtils::getVersionSimulating()
 {
     return Mod::get()->getSettingValue<std::string>("version");
